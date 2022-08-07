@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import {Link} from "react-router-dom";
+
 
 export default function Header() {
     const [isLoggedIn, setLoggedIn] = useState(false);
@@ -12,6 +14,7 @@ export default function Header() {
         /// handle what happens if user clicks on login button
         setLoggedIn(true);
     }
+
     function renderLogin() {
         if (isLoggedIn) {
             return (
@@ -54,16 +57,17 @@ export default function Header() {
     return (
         <nav className="navbar navbar-expand-md bg-dark">
             <div className="container-fluid">
-                <a className="navbar-brand" href="/">
+
+                <Link to="/" className="navbar-brand">
                     RemindMe
-                </a>
+                </Link>
                 <div className="headerLeft">
-                    <a className="btn btn-outline-light mx-3 my-2" href="#" role="button">
+                    <Link to = "/create" className="btn btn-outline-light mx-3 my-2"  role="button">
                         create
-                    </a>
-                    <a className="btn btn-outline-light mx-3 my-2" href="#" role="button">
+                    </Link>
+                    <Link to = "/dashboard" className="btn btn-outline-light mx-3 my-2" href="#" role="button">
                         Dashboard
-                    </a>
+                    </Link>
                     {renderLogin()}
                 </div>
             </div>
