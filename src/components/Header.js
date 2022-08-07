@@ -1,42 +1,72 @@
-export default function Header(){
+import React, { useState, useEffect } from "react";
 
-return (
-    <nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"/></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
-)
+export default function Header() {
+    const [isLoggedIn, setLoggedIn] = useState(false);
 
+    useEffect(() => {
+        // check if loggedin previously and then set state
+        setLoggedIn(false);
+    }, []);
+
+    function handleLoginClick() {
+        /// handle what happens if user clicks on login button
+        setLoggedIn(true);
+    }
+    function renderLogin() {
+        if (isLoggedIn) {
+            return (
+                <span className="dropdown dropdown-center">
+                    <button
+                        className="btn btn-outline-light dropdown-toggle"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                    >
+                        Hello
+                    </button>
+                    <ul className="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <a className="dropdown-item" href="#">
+                                Action
+                            </a>
+                        </li>
+                        <li>
+                            <a className="dropdown-item" href="#">
+                                Another action
+                            </a>
+                        </li>
+                    </ul>
+                </span>
+            );
+        } else {
+            return (
+                <button
+                    type="button"
+                    className="btn btn-outline-light"
+                    onClick={handleLoginClick}
+                >
+                    Login
+                </button>
+            );
+        }
+    }
+
+    return (
+        <nav className="navbar navbar-expand-md bg-dark">
+            <div className="container-fluid">
+                <a className="navbar-brand" href="/">
+                    RemindMe
+                </a>
+                <div className="headerLeft">
+                    <a className="btn btn-outline-light mx-3 my-2" href="#" role="button">
+                        create
+                    </a>
+                    <a className="btn btn-outline-light mx-3 my-2" href="#" role="button">
+                        Dashboard
+                    </a>
+                    {renderLogin()}
+                </div>
+            </div>
+        </nav>
+    );
 }
