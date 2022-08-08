@@ -21,17 +21,16 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />}>
-        <Route path="" element={<Main />} />
-        <Route path="create" element={<Create />} />
-        <Route path="dashboard" element={<Dashboard />} />
-        <Route path="login" element={<Login />} />
-        <Route path="settings" element={<Settings />} />
-        
-      </Route>
-    </Routes>
-    
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route path="" element={<Main />} />
+          <Route path="create" element={<Create />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="login" element={<Login />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
+      </Routes>
+
     </BrowserRouter>
   </React.StrictMode>
 );
